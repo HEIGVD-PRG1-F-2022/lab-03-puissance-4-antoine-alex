@@ -7,6 +7,7 @@ using Plateau = vector<vector<int>>;
 
 
 void affichageConsole(Plateau plateau);
+void verifyInput(Plateau plateau, int x, int y);
 
 int main() {
     cout << "Regles de la puissance 4 : " << endl;
@@ -21,11 +22,18 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-
+bool verifyInput(Plateau plateau, unsigned int x, int joueur) {
+    for(int i = plateau[0].size() - 1; i > 0; i--) {
+        if(plateau[x][i] != 0) {
+            plateau[x][i] = joueur;
+            return true;
+        }
+    }
+    return false;
+}
 
 void affichageConsole(Plateau plateau) {
-    vector<int> colonne = plateau[0];
-    for(vector<int> colonne: plateau) {
+    for(vector<int> colonne : plateau) {
         for(int i : colonne) {
             std::cout << i;
         }
