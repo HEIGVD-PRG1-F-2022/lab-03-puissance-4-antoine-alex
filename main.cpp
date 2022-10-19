@@ -7,7 +7,7 @@ using Plateau = vector<vector<int>>;
 
 
 void affichageConsole(Plateau plateau);
-bool verifyInput(Plateau& plateau, unsigned int x, int joueur);
+bool ajoutJeton(Plateau& plateau, unsigned int x, int joueur);
 
 int main() {
     cout << "Regles de la puissance 4 : " << endl;
@@ -17,21 +17,32 @@ int main() {
 
     Plateau plateau(hauteur, std::vector<int>(longueur, 0));
     plateau[5][0] = 1;
-    verifyInput(plateau, 0,1);
-    affichageConsole(plateau);
 
+    int colonne = 0; 
+
+    do {
+        std::cout << "Entrez un nombre entre 0-6: ";
+        std::cin >> colonne;
+        colonne = 0;
+    }while(!ajoutJeton(plateau,colonne,2));
+
+    affichageConsole(plateau);
 
     return EXIT_SUCCESS;
 }
 
-bool verifyInput(Plateau& plateau, unsigned int x, int joueur) {
-    for(int i = plateau[0].size() - 1; i >= 0; i--) {
-        if(plateau[x][i] != 0) {
-             plateau[x][i] = joueur;
-             return true;
-         }
-        std::cout << i;
-    } std::cout << endl;
+bool ajoutJeton(Plateau& plateau, unsigned int colonne, int joueur) {
+    int count = 0;
+    for(int i = plateau.size() - 1; i >= 0; i--) {
+        if(plateau[i].at(colonne) == 0) {
+            plateau[i].at(colonne) = joueur;
+            return true;
+        }
+
+        if(plateau[i].at(colonne) != 0) {
+            count++;
+        }
+    }
     return false;
 }
 
