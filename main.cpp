@@ -25,13 +25,13 @@ int main() {
 }
 
 bool verifyInput(Plateau& plateau, unsigned int x, int joueur) {
-    for(int i = plateau[0].size() - 1; i > 0; i--) {
-        // if(plateau[x][i] != 0) {
-        //     plateau[x][i] = joueur;
-        //     return true;
-        // }
+    for(int i = plateau[0].size() - 1; i >= 0; i--) {
+        if(plateau[x][i] != 0) {
+             plateau[x][i] = joueur;
+             return true;
+         }
         std::cout << i;
-    }
+    } std::cout << endl;
     return false;
 }
 
