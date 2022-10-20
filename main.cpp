@@ -47,9 +47,18 @@ bool ajoutJeton(Plateau& plateau, unsigned int colonne, int joueur) {
 }
 
 void affichageConsole(Plateau plateau) {
+
+    for(int i=0; i < plateau[0].size(); i++) {
+       std::cout << " | " << i;
+    }
+    std::cout << std::endl;
+    std::string s (plateau[0].size()*4,'-');
+    std::cout << " " << s << std::endl;
+
+
     for(vector<int> colonne : plateau) {
         for(int i : colonne) {
-            std::cout << i;
+           std::cout << " | " << i;
         }
         std::cout << std::endl;
     }
